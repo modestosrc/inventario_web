@@ -1,0 +1,10 @@
+(executable
+ (public_name inventario_web)
+ (name main)
+ (libraries inventario_web dream lwt)
+ (preprocess (pps lwt_ppx)))
+
+(rule
+ (targets pages.ml)
+ (deps pages.eml.html)
+ (action (run dream_eml %{deps} --workspace %{workspace_root})))
