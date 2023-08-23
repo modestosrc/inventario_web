@@ -3,7 +3,7 @@ let hello =
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>HTMX e OCaml</title>
+            <title>Invetario de Trajes</title>
             <script src="https://unpkg.com/htmx.org"></script>
         </head>
         <nav>
@@ -25,26 +25,18 @@ let inicio =
         <br>
         <a style="color: mediumaquamarine; font-size: 200%;"> Bem vindo! </a>
         <p style=""> Desenvolvido por: Mateus Felipe da Silva</p>
-        <p style=""> Versão: 0.1.0</p>
+        <p style=""> Versão: 0.2.0</p>
     </div>
 
-let tabela =
+let tabela rows =
     <div>
         <table>
             <tr>
-                <th>1</th>
-                <th>2</th>
-                <th>3</th>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Emprestado</th>
             </tr>
-            <tr>
-                <th>4</th>
-                <th>5</th>
-                <th>6</th>
-            </tr>
-            <tr>
-                <th>7</th>
-                <th>8</th>
-                <th>9</th>
-            </tr>
+            <%s! rows %>
         </table>
     </div>

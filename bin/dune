@@ -1,7 +1,7 @@
 (executable
  (public_name inventario_web)
  (name main)
- (libraries inventario_web dream lwt)
+ (libraries inventario_web dream lwt sqlite3)
  (preprocess (pps lwt_ppx)))
 
 (rule
