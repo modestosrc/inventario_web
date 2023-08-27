@@ -1,0 +1,5 @@
+_build/*
+lib/*
+test*
+dune-project
+inventario_web.opam

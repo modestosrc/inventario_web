@@ -9,9 +9,8 @@ let hello =
         <nav>
             <a hx-target="#maindiv" hx-get="inicio" hx-trigger="click">Inicio</a>
             <a hx-target="#maindiv" hx-get="tabela" hx-trigger="click">Tabela</a>
+            <a hx-target="#maindiv" hx-get="dancarinos" hx-trigger="click">Dançarinos</a>
         </nav>
-        <aside>
-        </aside>
         <section>
             <body>
                 <div id="maindiv" hx-get="inicio" hx-trigger="load" hx-target="#maindiv">
@@ -31,12 +30,47 @@ let inicio =
 let tabela rows =
     <div>
         <table>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Quantidade</th>
-                <th>Emprestado</th>
-            </tr>
-            <%s! rows %>
+            <thead style="border: 1px solid black; border-collapse: collapse;">
+                <tr>
+                    <th style="text-align: center; width: 25%; border: 1px solid black; border-collapse: collapse;">Nome</th>
+                    <th style="text-align: center; width: 25%; border: 1px solid black; border-collapse: collapse;">Quantidade</th>
+                </tr>
+            </thead>
+            <tbody hx-confirm="Você tem certeza?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+                <style>
+                    tr.htmx-swapping td { opacity: 0; transition: opacity 1s ease-out;}
+                </style>
+                <%s! rows %>
+            </tbody>
         </table>
+        <form id="formnewtraje" hx-post="/traje">
+            <input name="nome"></input>
+            <input name="quantidade" type="number" min="0" max="100" style="width: 50pt;"></input>
+            <button type="submit">Adicionar</button>
+        </form>
     </div>
+
+let dancarinos rows =
+    <div>
+        <table>
+            <thead style="border: 1px solid black; border-collapse: collapse;">
+                <tr>
+                    <th style="text-align: center; width: 25%; border: 1px solid black; border-collapse: collapse;">Nome</th>
+                    <th style="text-align: center; width: 25%; border: 1px solid black; border-collapse: collapse;">Telefone</th>
+                </tr>
+            </thead>
+            <tbody hx-confirm="Você tem certeza?" hx-target="closest tr" hx-swap="outerHTML swap:1s">
+                <style>
+                    tr.htmx-swapping td { opacity: 0; transition: opacity 1s ease-out;}
+                </style>
+                <%s! rows %>
+            </tbody>
+        </table>
+        <form id="formnewdancarino" hx-post="/dancarino">
+            <input name="nome" type="text"></input>
+            <input name="telefone" type="text"></input>
+            <button type="submit">Adicionar</button>
+        </form>
+    </div>
+
+
